@@ -1,5 +1,5 @@
 import pygame
-from pygame.draw import *
+import pygame.draw as pd
 import random as rd
 
 pygame.init()
@@ -26,8 +26,8 @@ unicorn_size = 0.11
 
 
 def land_sky(c_sky, c_land, horizon):
-    rect(screen, c_land, (0, horizon, 600, screen_y - horizon))
-    rect(screen, c_sky, (0, 0, 600, horizon))
+    pd.rect(screen, c_land, (0, horizon, 600, screen_y - horizon))
+    pd.rect(screen, c_sky, (0, 0, 600, horizon))
 
 
 '''
@@ -43,7 +43,7 @@ def sun(c_sky, x, y, r_sun):
     g = c_sky[1]
     b = c_sky[2]
     for i in range(255):
-        circle(screen, (r, g, b), (x, y), r_sun)  # градиент
+        pd.circle(screen, (r, g, b), (x, y), r_sun)  # градиент
         if b > 0:
             b -= 1
         if r < 255:
@@ -63,17 +63,17 @@ def forest(c_apple, c_leaf, up_c_leaf, c_tree, trees_num, tree_size):
     sr1 = pygame.Surface((200, 360))
     sr1.fill((0, 0, 0))
 
-    rect(sr1, c_tree, (85, 210, 30, 150))
-    ellipse(sr1, c_leaf, (35, 0, 130, 145))
-    ellipse(sr1, up_c_leaf, (35, 0, 130, 145), 2)
-    ellipse(sr1, c_leaf, (0, 60, 200, 85))
-    ellipse(sr1, up_c_leaf, (0, 60, 200, 85), 2)
-    ellipse(sr1, c_leaf, (40, 127, 120, 85))
-    ellipse(sr1, up_c_leaf, (40, 127, 120, 85), 2)
-    circle(sr1, c_apple, (20, 105), 13)
-    circle(sr1, c_apple, (170, 107), 13)
-    circle(sr1, c_apple, (140, 170), 13)
-    circle(sr1, c_apple, (80, 70), 13)
+    pd.rect(sr1, c_tree, (85, 210, 30, 150))
+    pd.ellipse(sr1, c_leaf, (35, 0, 130, 145))
+    pd.ellipse(sr1, up_c_leaf, (35, 0, 130, 145), 2)
+    pd.ellipse(sr1, c_leaf, (0, 60, 200, 85))
+    pd.ellipse(sr1, up_c_leaf, (0, 60, 200, 85), 2)
+    pd.ellipse(sr1, c_leaf, (40, 127, 120, 85))
+    pd.ellipse(sr1, up_c_leaf, (40, 127, 120, 85), 2)
+    pd.circle(sr1, c_apple, (20, 105), 13)
+    pd.circle(sr1, c_apple, (170, 107), 13)
+    pd.circle(sr1, c_apple, (140, 170), 13)
+    pd.circle(sr1, c_apple, (80, 70), 13)
 
     sr1.set_colorkey((0, 0, 0))  # обесцвечивает фон деревье
 
@@ -98,37 +98,37 @@ def unicorn(c_body, c_corn, uni_size):
     sre = pygame.Surface((400, 400))  # поверхностьь для единорога
     sre.fill((0, 0, 0))
 
-    ellipse(sre, c_body, (70, 200, 200, 100))
-    rect(sre, c_body, (90, 280, 20, 90))
-    rect(sre, c_body, (125, 280, 20, 80))
-    rect(sre, c_body, (200, 280, 20, 90))
-    rect(sre, c_body, (230, 280, 20, 80))  # тело и ноги
+    pd.ellipse(sre, c_body, (70, 200, 200, 100))
+    pd.rect(sre, c_body, (90, 280, 20, 90))
+    pd.rect(sre, c_body, (125, 280, 20, 80))
+    pd.rect(sre, c_body, (200, 280, 20, 90))
+    pd.rect(sre, c_body, (230, 280, 20, 80))  # тело и ноги
 
-    ellipse(sre, c_body, (200, 110, 70, 165))
-    ellipse(sre, c_body, (230, 105, 85, 43))  # морда
-    circle(sre, (c_corn), (260, 120), 9)  # глаз
-    circle(sre, (0, 0, 1), (258, 118), 4)  # зрачок
-    polygon(sre, (c_corn), ([225, 113], [235, 5], [245, 113]))  # рог
+    pd.ellipse(sre, c_body, (200, 110, 70, 165))
+    pd.ellipse(sre, c_body, (230, 105, 85, 43))  # морда
+    pd.circle(sre, (c_corn), (260, 120), 9)  # глаз
+    pd.circle(sre, (0, 0, 1), (258, 118), 4)  # зрачок
+    pd.polygon(sre, (c_corn), ([225, 113], [235, 5], [245, 113]))  # рог
 
-    ellipse(sre, (222, 177, 234), (185, 110, 65, 20))
-    ellipse(sre, (222, 177, 234), (183, 112, 65, 20))
-    ellipse(sre, (255, 239, 171), (182, 125, 60, 18))
-    ellipse(sre, (255, 239, 171), (162, 165, 55, 23))
-    ellipse(sre, (244, 216, 228), (172, 145, 52, 23))
-    ellipse(sre, (176, 234, 222), (150, 175, 52, 23))
-    ellipse(sre, (234, 177, 176), (150, 185, 55, 20))
-    ellipse(sre, (234, 177, 176), (180, 135, 60, 23))  # грива
+    pd.ellipse(sre, (222, 177, 234), (185, 110, 65, 20))
+    pd.ellipse(sre, (222, 177, 234), (183, 112, 65, 20))
+    pd.ellipse(sre, (255, 239, 171), (182, 125, 60, 18))
+    pd.ellipse(sre, (255, 239, 171), (162, 165, 55, 23))
+    pd.ellipse(sre, (244, 216, 228), (172, 145, 52, 23))
+    pd.ellipse(sre, (176, 234, 222), (150, 175, 52, 23))
+    pd.ellipse(sre, (234, 177, 176), (150, 185, 55, 20))
+    pd.ellipse(sre, (234, 177, 176), (180, 135, 60, 23))  # грива
 
-    ellipse(sre, (234, 177, 176), (55, 215, 60, 23))
-    ellipse(sre, (214, 177, 176), (45, 220, 55, 20))
-    ellipse(sre, (255, 239, 171), (0, 270, 63, 30))
-    ellipse(sre, (222, 177, 234), (35, 250, 65, 20))
-    ellipse(sre, (255, 239, 171), (40, 260, 60, 18))
-    ellipse(sre, (255, 239, 171), (35, 227, 55, 23))
-    ellipse(sre, (244, 216, 228), (10, 240, 62, 33))
-    ellipse(sre, (176, 234, 222), (35, 270, 32, 23))
-    ellipse(sre, (200, 177, 176), (40, 280, 60, 23))
-    ellipse(sre, (176, 234, 222), (45, 270, 55, 23))  # хвост
+    pd.ellipse(sre, (234, 177, 176), (55, 215, 60, 23))
+    pd.ellipse(sre, (214, 177, 176), (45, 220, 55, 20))
+    pd.ellipse(sre, (255, 239, 171), (0, 270, 63, 30))
+    pd.ellipse(sre, (222, 177, 234), (35, 250, 65, 20))
+    pd.ellipse(sre, (255, 239, 171), (40, 260, 60, 18))
+    pd.ellipse(sre, (255, 239, 171), (35, 227, 55, 23))
+    pd.ellipse(sre, (244, 216, 228), (10, 240, 62, 33))
+    pd.ellipse(sre, (176, 234, 222), (35, 270, 32, 23))
+    pd.ellipse(sre, (200, 177, 176), (40, 280, 60, 23))
+    pd.ellipse(sre, (176, 234, 222), (45, 270, 55, 23))  # хвост
     sre.set_colorkey((0, 0, 0))
     sre1 = pygame.transform.rotozoom(sre, 0, uni_size * 5)
     sre1.set_colorkey((0, 0, 0))
