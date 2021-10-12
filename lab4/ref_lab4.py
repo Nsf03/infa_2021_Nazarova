@@ -11,7 +11,7 @@ FPS = 30
 screen = pygame.display.set_mode((screen_x, screen_y))
 
 sky_color = (0, 255, 255)
-land_color = (0, 255, 0)
+land_color = (0, 255, 1)
 sun_color = (255, 255, 0)
 horizon_level = 500
 trees_number = 7
