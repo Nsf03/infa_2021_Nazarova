@@ -61,15 +61,6 @@ while not finished:
         if min(ball[1], abs(ball[1] - screen_y)) <= ball[2]:
             ball[4] = -ball[4]
             ball[1] += 2 * ball[4]
-        for other_ball in balls: #столкновение шаров
-            if ball != other_ball:
-                if (ball[0] - other_ball[0]) ** 2 + (ball[1] - other_ball[1]) ** 2 <= (ball[2] + other_ball[2]) ** 2:
-                    temp_vx = ball[3]
-                    temp_vy = ball[4]
-                    ball[3] = other_ball[3]
-                    ball[4] = other_ball[4]
-                    other_ball[3] = temp_vx
-                    other_ball[4] = temp_vy
     pygame.display.update()
     screen.fill(BLACK)
 print('УРА, ВАШ СЧЕТ', score)
