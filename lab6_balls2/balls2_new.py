@@ -19,11 +19,18 @@ WHITE = (255, 220, 220)
 COLORS = [RED, BLUE, YELLOW, GREEN, MAGENTA, CYAN]
 
 
-# список под характеристики шара
-
 class Ball:
+    """
+Класс обычных мишеней - шаров
+Они двигаются и исчезают при нажатии
+За каждое непопадание +1 балл
+    """
 
     def __init__(self):
+        """
+        метод класса Ball
+        создает шар с новыми случайными параметрами
+        """
         self.r = randint(20, 100)
         self.x = randint(100, 1100)
         self.y = randint(100, 800)
@@ -32,9 +39,17 @@ class Ball:
         self.color_number = randint(1, 5)
 
     def make_ball(self):
+        """
+        метод класса Ball
+        рисует мяч на экране
+        """
         pygame.draw.circle(screen, COLORS[self.color_number], (self.x, self.y), self.r)
 
     def move_ball(self):
+        """
+        метод класса Ball
+        задает движение шара и отталкивание от стенок
+        """
         self.x += self.vx  # задаем скорость шаров
         self.y += self.vy
         if min(self.x, abs(self.x - screen_x)) <= self.r:  # отталкивание от границ экрана
@@ -44,9 +59,20 @@ class Ball:
             self.vy = -self.vy
             self.y += 2 * self.vy
 
+
 class Bomb:
+    """
+    Класс особых мишеней - бомб
+    Двигаются с увеличением радиуса
+    Со временем дают меньше очков при попадании (от 3 до 1)
+    Если не успеть за 3 секунды - бомба исчезнет, игрок получает -3 балла
+    """
 
     def __init__(self):
+        """
+        Метод класса бомб
+        Создает бомбу с новыми случайными параметрами
+        """
         self.r = 10
         self.x = randint(100, 1100)
         self.y = randint(100, 800)
@@ -57,13 +83,20 @@ class Bomb:
         self.bills = 3
 
     def make_bomb(self):
-            pygame.draw.circle(screen, COLORS[self.color_number], (self.x, self.y), self.r)
-            pygame.draw.circle(screen, WHITE, (self.x, self.y), self.r*0.75)
-            pygame.draw.circle(screen, COLORS[self.color_number], (self.x, self.y), self.r*0.5)
-            pygame.draw.circle(screen, WHITE, (self.x, self.y), self.r*0.25)
-
+        """
+        Метод класса бомб
+        Рисует бомбу на экране
+        """
+        pygame.draw.circle(screen, COLORS[self.color_number], (self.x, self.y), self.r)
+        pygame.draw.circle(screen, WHITE, (self.x, self.y), self.r * 0.75)
+        pygame.draw.circle(screen, COLORS[self.color_number], (self.x, self.y), self.r * 0.5)
+        pygame.draw.circle(screen, WHITE, (self.x, self.y), self.r * 0.25)
 
     def move_bomb(self):
+        """
+        Метод класса бомб
+        Задает движение бомбы
+        """
         self.x += self.vx  # задаем скорость бомб
         self.y += self.vy
         if min(self.x, abs(self.x - screen_x)) <= self.r:  # отталкивание от границ экрана
@@ -80,10 +113,19 @@ class Bomb:
         elif self.r >= FPS * 0.2 * 1 + 10:
             self.bills = 2
 
-def table:
-    names = open(scor)
 
-    print(a, b, c, file=output)
+def table():
+    """
+    Функция считывает рейтинг из файлы score.txt и вписывает туда нового игрока
+    """
+    names = open('score.txt').read().splitlines()
+    your_score = str(score) + ' ' + name
+    names.append(your_score)
+    names.sort()
+    with open('score.txt', 'w') as file:
+        for item in names:
+            file.write("%s\n" % item)
+
 
 pygame.display.update()
 clock = pygame.time.Clock()
@@ -134,8 +176,10 @@ while not finished:
 pygame.quit()
 print('КАК ВАС ЗОВУТ?')
 name = input()
-if score >=1:
+if score >= 1:
     print(name, ',ВАШ СЧЕТ', score)
+    print('ВЫ МОЖЕТЕ НАЙТИ СВОИ РЕЗУЛЬТАТЫ В ФАЙЛЕ SCORE.TXT')
+    table()
 else:
     print(name, ',УВЫ, ВАШ СЧЕТ ВСЕГО', score)
-
+    print('ВЫ НЕ БУДЕТЕ ДОБАВЛЕНЫ В ТАБЛИЦУ ЛУЧШИХ')
