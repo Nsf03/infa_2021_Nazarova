@@ -174,7 +174,7 @@ while not finished:
     pygame.display.update()
     screen.fill(BLACK)
 pygame.quit()
-print('КАК ВАС ЗОВУТ?')
+print('КАК ВАС ЗОВУТ (ЛАТИНИЦА)?')
 name = input()
 if score >= 1:
     print(name, ',ВАШ СЧЕТ', score)
