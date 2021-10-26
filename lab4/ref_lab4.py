@@ -26,19 +26,24 @@ unicorn_size = 0.11
 
 
 def land_sky(c_sky, c_land, horizon):
+    """
+    Функция рисует небо и землю
+    c_sky - цвет неба, заданный в формате (RGB)
+    c_land - цвет земли, заданный в формате (RGB)
+    horizon - уровень горизонта
+    """
     pd.rect(screen, c_land, (0, horizon, 600, screen_y - horizon))
     pd.rect(screen, c_sky, (0, 0, 600, horizon))
 
 
-'''
-Функция рисует небо и землю
-c_sky - цвет неба, заданный в формате (RGB)
-c_land - цвет земли, заданный в формате (RGB)
-horizon - уровень горизонта
-'''
-
-
 def sun(c_sky, x, y, r_sun):
+    """
+    Функция рисует солнце
+    c_sky - цвет неба, заданный в формате (RGB)
+    x, y  - координаты центра солнца
+    r_sun - радиус солнца
+    """
+
     r = c_sky[0]
     g = c_sky[1]
     b = c_sky[2]
@@ -51,15 +56,15 @@ def sun(c_sky, x, y, r_sun):
         r_sun -= 0.5
 
 
-'''
-Функция рисует солнце
-c_sky - цвет неба, заданный в формате (RGB)
-x, y  - координаты центра солнца
-r_sun - радиус солнца
-'''
-
-
 def forest(c_apple, c_leaf, up_c_leaf, c_tree, trees_num, tree_size):
+    """
+    Функция рисует яблоневый сад
+    c_apple - цвет яблок, заданный в формате (RGB)
+    c_leaf - цвет листвы, заданный в формате (RGB)
+    c_tree - цвет ствол, заданный в формате (RGB)
+    trees_num - количество яблонь
+    tree_size - размер яблонь (порядка 0,1 - 2)
+    """
     sr1 = pygame.Surface((200, 360))
     sr1.fill((0, 0, 0))
 
@@ -84,17 +89,14 @@ def forest(c_apple, c_leaf, up_c_leaf, c_tree, trees_num, tree_size):
                          (horizon_level / 2) + i * (screen_y - horizon_level / 2) / trees_num / 2))
 
 
-'''
-Функция рисует яблоневый сад
-c_apple - цвет яблок, заданный в формате (RGB)
-c_leaf - цвет листвы, заданный в формате (RGB)
-c_tree - цвет ствол, заданный в формате (RGB)
-trees_num - количество яблонь
-tree_size - размер яблонь (порядка 0,1 - 2)
-'''
-
-
 def unicorn(c_body, c_corn, uni_size):
+    """
+    Функция рисует единорогов
+    c_ode - цвет тела единорогов, заданный в формате (RGB)
+    c_corn - цвет рога, заданный в формате (RGB)
+    uni_size - размер единорогов (порядка 0,1 - 2)
+    """
+
     sre = pygame.Surface((400, 400))  # поверхностьь для единорога
     sre.fill((0, 0, 0))
 
@@ -106,9 +108,9 @@ def unicorn(c_body, c_corn, uni_size):
 
     pd.ellipse(sre, c_body, (200, 110, 70, 165))
     pd.ellipse(sre, c_body, (230, 105, 85, 43))  # морда
-    pd.circle(sre, (c_corn), (260, 120), 9)  # глаз
+    pd.circle(sre, c_corn, (260, 120), 9)  # глаз
     pd.circle(sre, (0, 0, 1), (258, 118), 4)  # зрачок
-    pd.polygon(sre, (c_corn), ([225, 113], [235, 5], [245, 113]))  # рог
+    pd.polygon(sre, c_corn, ([225, 113], [235, 5], [245, 113]))  # рог
 
     pd.ellipse(sre, (222, 177, 234), (185, 110, 65, 20))
     pd.ellipse(sre, (222, 177, 234), (183, 112, 65, 20))
@@ -142,13 +144,6 @@ def unicorn(c_body, c_corn, uni_size):
     sre1.set_colorkey((0, 0, 0))
     screen.blit(sre1, (screen_x / 2, horizon_level * 1.3))
 
-
-'''
-Функция рисует единорогов
-c_ode - цвет тела единорогов, заданный в формате (RGB)
-c_corn - цвет рога, заданный в формате (RGB)
-uni_size - размер единорогов (порядка 0,1 - 2)
-'''
 
 land_sky(sky_color, land_color, horizon_level)
 sun(sky_color, 400, 200, 150)
