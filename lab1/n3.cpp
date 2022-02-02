@@ -3,7 +3,8 @@
 using namespace std;
 
 int main() {
-    int x, y, pr;
+    int x, y;
+    long long pr;
     pr = 1;
     cin >> x >> y;
     for (int i = 0; i < y; i++) {
