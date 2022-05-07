@@ -1,0 +1,13 @@
+12
+ABCCBA 2 ABC ABC 25
+ABAC 2 AB AC 15
+ABC 3 A B C 10
+AB 2 A B 7
+AC 2 A C 7
+BC 2 B C 7
+A 3 a a a 3
+B 3 b b b 3
+C 3 c c c 3
+a 0 1
+b 0 1
+c 0 1
